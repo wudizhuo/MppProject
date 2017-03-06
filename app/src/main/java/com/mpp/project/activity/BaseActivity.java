@@ -1,4 +1,4 @@
-package com.mpp.project.mppproject.activity;
+package com.mpp.project.activity;
 
 import android.app.Activity;
 
