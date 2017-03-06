@@ -151,7 +151,8 @@ public class FileStorageUtil {
 
         @Override
         protected void writeStreamHeader() throws IOException {
-            // do nothing for 方便反序列化时正常读取
+            // Don't include header when writeObject, that use for deserializable
+            // do nothing use for deserializable
         }
 
     }
