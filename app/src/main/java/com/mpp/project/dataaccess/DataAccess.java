@@ -1,8 +1,10 @@
 package com.mpp.project.dataaccess;
 
-import projectstartup.librarysample.business.LibraryMember;
+
+import com.mpp.project.business.LibraryMember;
 
 public interface DataAccess {
-	public void saveLibraryMember(String name, LibraryMember member);
-	public LibraryMember readLibraryMember(String name);
+    public void saveLibraryMember(String name, LibraryMember member);
+
+    public LibraryMember readLibraryMember(String name);
 }
