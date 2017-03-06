@@ -23,7 +23,7 @@
                     android:id="@+id/iv_logo"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/mum_logo" />
 
                 <LinearLayout
                     android:id="@+id/login_panel"
