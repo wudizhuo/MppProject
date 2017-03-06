@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/btn_via_list"
+        style="@style/Homepage.Button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@color/color_purple"
+        android:text="Query Book" />
+
+    <Button
+        android:id="@+id/btn_mmia_list"
+        style="@style/Homepage.Button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@color/color_amber"
+        android:text="Add Book" />
+
+    <Button
+        android:id="@+id/btn_kit_stock_card"
+        style="@style/Homepage.Button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@color/color_teal"
+        android:text="Add member" />
+
+</LinearLayout>
