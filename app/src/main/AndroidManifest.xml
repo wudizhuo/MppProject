@@ -18,7 +18,12 @@
         </activity>
 
         <activity android:name=".activity.Dashboard"/>
-        <activity android:name=".activity.Book"/>
+        <activity
+            android:label="Add Book"
+            android:name=".activity.Book"/>
+        <activity
+            android:label="Add Book"
+            android:name=".activity.AddBook"/>
 
     </application>
 

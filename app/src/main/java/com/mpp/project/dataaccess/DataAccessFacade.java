@@ -1,6 +1,7 @@
 package com.mpp.project.dataaccess;
 
 import com.mpp.project.App;
+import com.mpp.project.business.Book;
 import com.mpp.project.business.Person;
 
 import java.io.File;
@@ -29,4 +30,9 @@ public class DataAccessFacade implements DataAccess {
         return (Person) FileStorageUtil.readObject(file);
     }
 
+    @Override
+    public void saveBook(Book book) {
+        File file = new File(getDataDir(), "book" + book.getId());
+        FileStorageUtil.writeObject(file, book);
+    }
 }
