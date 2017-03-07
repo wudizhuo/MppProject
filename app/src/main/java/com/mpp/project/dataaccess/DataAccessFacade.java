@@ -6,6 +6,8 @@ import java.io.File;
 
 
 public class DataAccessFacade implements DataAccess {
+    public static final String OUTPUT_DIR = "";
+
     public void saveLibraryMember(String name, LibraryMember member) {
         FileStorageUtil.writeObject(new File(name), member);
     }
