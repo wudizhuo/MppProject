@@ -1,6 +1,6 @@
 package com.mpp.project.dataaccess;
 
-import com.mpp.project.business.LibraryMember;
+import com.mpp.project.business.Person;
 
 import java.io.File;
 
@@ -8,12 +8,12 @@ import java.io.File;
 public class DataAccessFacade implements DataAccess {
     public static final String OUTPUT_DIR = "";
 
-    public void saveLibraryMember(String name, LibraryMember member) {
+    public void savePerson(String name, Person member) {
         FileStorageUtil.writeObject(new File(name), member);
     }
 
-    public LibraryMember readLibraryMember(String name) {
-        return (LibraryMember) FileStorageUtil.readObject(new File(name));
+    public Person readPerson(String name) {
+        return (Person) FileStorageUtil.readObject(new File(name));
     }
 
 }

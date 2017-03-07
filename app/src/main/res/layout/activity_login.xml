@@ -70,15 +70,6 @@
                                 android:hint="@string/hint_password"
                                 android:inputType="textPassword"
                                 android:paddingRight="35dp" />
-
-                            <ImageView
-                                android:id="@+id/iv_visibility_pwd"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="end"
-                                android:layout_marginTop="-32dp"
-                                android:padding="0dp"
-                                android:src="@drawable/ic_visibility_off" />
                         </android.support.design.widget.TextInputLayout>
                     </FrameLayout>
 

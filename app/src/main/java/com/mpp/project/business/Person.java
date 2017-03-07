@@ -11,6 +11,7 @@ public class Person implements Serializable{
     private static final long serialVersionUID = 1L;
     private String firstName;
     private String lastName;
+    private String passWord;
     private String phoneNo;
     private Address address;
 
@@ -32,5 +33,8 @@ public class Person implements Serializable{
     }
     public Address getAddress() {
         return address;
+    }
+    public String getPassWord() {
+        return passWord;
     }
 }

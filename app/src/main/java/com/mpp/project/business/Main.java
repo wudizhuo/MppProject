@@ -23,8 +23,8 @@ public class Main {
         member.checkout(c, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis() + 2 * 24 * 60 * 60 * 1000));
         System.out.println("Location of 'user.dir':\n  " + DataAccessFacade.OUTPUT_DIR);
         DataAccess da = new DataAccessFacade();
-        da.saveLibraryMember("Prageeth", member);
-        System.out.println("Reading record for John:\n" + "  " + da.readLibraryMember("John"));
+        da.savePerson("Prageeth", member);
+        System.out.println("Reading record for John:\n" + "  " + da.readPerson("John"));
 
 
     }
