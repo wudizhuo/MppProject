@@ -1,10 +1,12 @@
 package com.mpp.project.business;
 
+import java.io.Serializable;
+
 /**
  * Created by prageeth on 3/6/17.
  */
 
-public class Address {
+public class Address implements Serializable{
     private String number;
     private String street;
     private String city;

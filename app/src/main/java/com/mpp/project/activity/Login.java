@@ -43,6 +43,6 @@ public class Login extends BaseActivity {
             lyPassword.setError(getResources().getString(R.string.msg_empty_user));
             return;
         }
-
+        startActivity(Dashboard.getIntentToMe(this));
     }
 }

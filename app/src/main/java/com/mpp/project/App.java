@@ -20,9 +20,9 @@ public class App extends Application {
     }
 
     private void setupData() {
-        if (AppPreferences.getHasSetupFile()) {
-            return;
-        }
+//        if (AppPreferences.getHasSetupFile()) {
+//            return;
+//        }
         DataAccessFacade dataAccessFacade = new DataAccessFacade();
         File appDir = dataAccessFacade.getDataDir();
         if (!appDir.exists()) {

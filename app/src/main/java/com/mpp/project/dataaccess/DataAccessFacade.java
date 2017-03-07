@@ -21,9 +21,6 @@ public class DataAccessFacade implements DataAccess {
 
     public void savePerson(Person person) {
         File file = new File(getDataDir(), "person" + person.getUserId());
-        if (!file.exists()) {
-            file.mkdirs();
-        }
         FileStorageUtil.writeObject(file, person);
     }
 
