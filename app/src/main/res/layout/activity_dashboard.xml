@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/color_purple"
-        android:text="Books" />
+        android:text="Book" />
 
     <Button
         android:id="@+id/btn_members"
@@ -23,7 +23,7 @@
         android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:background="@color/color_teal"
-        android:text="Members" />
+        android:text="Member" />
 
     <Button
         android:id="@+id/btn_logout"
