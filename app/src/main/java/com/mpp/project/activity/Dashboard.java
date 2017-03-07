@@ -12,6 +12,7 @@ public class Dashboard extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        findViewById(R.id.btn_query).setOnClickListener(this);
         findViewById(R.id.btn_logout).setOnClickListener(this);
     }
 
@@ -30,6 +31,8 @@ public class Dashboard extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_query:
+                break;
             case R.id.btn_logout:
                 loginOut();
                 break;
