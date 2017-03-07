@@ -11,7 +11,7 @@ import com.mpp.project.dataaccess.DataAccessFacade;
 
 public class Login extends BaseActivity {
 
-    private EditText tx_username;
+    private EditText tx_userId;
     private EditText tx_password;
     private DataAccessFacade dataAccessFacade;
     public TextInputLayout lyPassword;
@@ -21,7 +21,7 @@ public class Login extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        tx_username = (EditText) findViewById(R.id.tx_username);
+        tx_userId = (EditText) findViewById(R.id.tx_userId);
         tx_password = (EditText) findViewById(R.id.tx_password);
         lyUserName = (TextInputLayout) findViewById(R.id.ly_username);
         lyPassword = (TextInputLayout) findViewById(R.id.ly_password);
@@ -36,9 +36,9 @@ public class Login extends BaseActivity {
 
     private void login() {
         lyPassword.setErrorEnabled(false);
-        String userName = tx_username.getText().toString();
+        int userId = Integer.parseInt(tx_userId.getText().toString());
         String password = tx_password.getText().toString();
-        Person person = dataAccessFacade.readPerson(userName);
+        Person person = dataAccessFacade.readPerson(userId);
         if (person == null || !password.equals(person.getPassWord())) {
             lyPassword.setError(getResources().getString(R.string.msg_empty_user));
             return;

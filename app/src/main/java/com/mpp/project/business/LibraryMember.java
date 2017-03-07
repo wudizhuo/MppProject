@@ -5,15 +5,11 @@ import java.util.Date;
 
 public class LibraryMember extends Person implements Serializable {
 	private CheckoutRecord record = new CheckoutRecord();
-	public LibraryMember(String firstName, String lastName, String phoneNo, Address address ) {
-		super(firstName,lastName,phoneNo,address);
+
+	public LibraryMember(int userId, String firstName, String lastName, String passWord, String phoneNo, Address address) {
+		super(userId, firstName, lastName, passWord, phoneNo, address);
 	}
 
-	public LibraryMember(String memberId, String firstName, String lastName, String phoneNo, Address address ) {
-		super(firstName,lastName,phoneNo,address);
-		this.memberId = memberId;
-	}
-	
 	public void checkout(LendableCopy copy, Date checkoutDate, Date dueDate) {
 		CheckoutRecordEntry entry = new CheckoutRecordEntry(copy, checkoutDate, dueDate);
 		record.addEntry(entry);

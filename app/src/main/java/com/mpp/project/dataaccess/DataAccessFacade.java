@@ -19,16 +19,16 @@ public class DataAccessFacade implements DataAccess {
         return result;
     }
 
-    public void savePerson(String name, Person member) {
-        File file = new File(getDataDir(), name);
+    public void savePerson(Person person) {
+        File file = new File(getDataDir(), "person" + person.getUserId());
         if (!file.exists()) {
             file.mkdirs();
         }
-        FileStorageUtil.writeObject(file, member);
+        FileStorageUtil.writeObject(file, person);
     }
 
-    public Person readPerson(String name) {
-        File file = new File(getDataDir(), name);
+    public Person readPerson(int useId) {
+        File file = new File(getDataDir(), "person" + useId);
         return (Person) FileStorageUtil.readObject(file);
     }
 

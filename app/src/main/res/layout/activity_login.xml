@@ -45,11 +45,11 @@
                         android:layout_marginTop="@dimen/margin_small">
 
                         <EditText
-                            android:id="@+id/tx_username"
+                            android:id="@+id/tx_userId"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/hint_username"
-                            android:inputType="textPersonName" />
+                            android:hint="@string/hint_userId"
+                            android:inputType="number" />
                     </android.support.design.widget.TextInputLayout>
 
                     <FrameLayout

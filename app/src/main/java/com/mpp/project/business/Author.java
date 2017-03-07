@@ -6,6 +6,10 @@ package com.mpp.project.business;
 
 public final class Author extends Person {
 
+    public Author(int userId, String firstName, String lastName, String passWord, String phoneNo, Address address) {
+        super(userId, firstName, lastName, passWord, phoneNo, address);
+    }
+
     public String getShortBio() {
         return shortBio;
     }
@@ -15,15 +19,4 @@ public final class Author extends Person {
     }
 
     private String shortBio;
-
-    public Author(String firstName, String lastName, String phoneNo, Address address) {
-        super(firstName, lastName, phoneNo, address);
-    }
-
-    public Author(String firstName, String lastName, String phoneNo, Address address, String description) {
-        super(firstName, lastName, phoneNo, address);
-        this.shortBio = description;
-    }
-
-
 }
