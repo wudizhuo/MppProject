@@ -9,7 +9,7 @@ import com.mpp.project.R;
 import com.mpp.project.business.Person;
 import com.mpp.project.dataaccess.DataAccessFacade;
 
-public class Login extends BaseActivity {
+public class Login extends BaseActivity implements View.OnClickListener {
 
     private EditText tx_userId;
     private EditText tx_password;
@@ -26,12 +26,7 @@ public class Login extends BaseActivity {
         lyUserName = (TextInputLayout) findViewById(R.id.ly_username);
         lyPassword = (TextInputLayout) findViewById(R.id.ly_password);
         dataAccessFacade = new DataAccessFacade();
-        findViewById(R.id.btn_login).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
+        findViewById(R.id.btn_login).setOnClickListener(this);
     }
 
     private void login() {
@@ -44,5 +39,16 @@ public class Login extends BaseActivity {
             return;
         }
         startActivity(Dashboard.getIntentToMe(this));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_login:
+                login();
+                break;
+            default:
+                break;
+        }
     }
 }
