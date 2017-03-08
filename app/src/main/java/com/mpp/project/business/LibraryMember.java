@@ -10,10 +10,12 @@ public class LibraryMember extends Person implements Serializable {
 
     public LibraryMember(int memberId, String firstName, String lastName, String passWord, String phoneNo, Address address) {
         super(memberId, firstName, lastName, passWord, phoneNo, address);
+        checkoutRecord = new CheckoutRecord();
     }
 
+    @Override
     public String toString() {
-        return "Checkout checkoutRecord for library member " + super.getLastName() + ": " + getCheckoutRecord();
+        return super.getFirstName() + " " + super.getLastName();
     }
 
     public CheckoutRecord getCheckoutRecord() {

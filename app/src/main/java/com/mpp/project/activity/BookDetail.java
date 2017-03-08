@@ -60,6 +60,7 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
         tv_memberInfo = (TextView) findViewById(R.id.tv_memberInfo);
 
         findViewById(R.id.btn_addCopy).setOnClickListener(this);
+        findViewById(R.id.btn_query).setOnClickListener(this);
         findViewById(R.id.btn_checkout).setOnClickListener(this);
     }
 
@@ -81,16 +82,13 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
             case R.id.btn_query:
                 query();
                 break;
-            case R.id.btn_showRecord:
-                showRecord();
-                break;
             default:
                 break;
         }
     }
 
-    private void showRecord() {
-        startActivity(CheckoutRecordActivity.getIntentToMe(BookDetail.this));
+    private void showRecord(int memberId) {
+        startActivity(CheckoutRecordActivity.getIntentToMe(BookDetail.this, memberId));
     }
 
     private void query() {
@@ -126,6 +124,8 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
         new DataAccessFacade().savePerson(member);
 
         Toast.makeText(this, "Check out success", Toast.LENGTH_SHORT).show();
+        showRecord(member.getUserId());
+        finish();
     }
 
     private void addCopy() {

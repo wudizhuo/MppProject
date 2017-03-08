@@ -31,6 +31,10 @@
             android:name=".activity.AddAuthor"
             android:label="Add Author" />
 
+        <activity
+            android:name=".activity.CheckoutRecordActivity"
+            android:label="Checkout Record" />
+
     </application>
 
 </manifest>

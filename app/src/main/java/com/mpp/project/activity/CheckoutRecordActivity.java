@@ -30,11 +30,12 @@ public class CheckoutRecordActivity extends BaseActivity {
         setContentView(R.layout.activity_checkout_record);
         ListView list = (ListView) findViewById(R.id.list);
 
-
         list.setAdapter(new CheckoutRecordAdapter(this, member.getCheckoutRecord().getEntries()));
     }
 
-    public static Intent getIntentToMe(Context context) {
-        return new Intent(context, CheckoutRecordActivity.class);
+    public static Intent getIntentToMe(Context context, int memberId) {
+        Intent intent = new Intent(context, CheckoutRecordActivity.class);
+        intent.putExtra("memberId", memberId);
+        return intent;
     }
 }

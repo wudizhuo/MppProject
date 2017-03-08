@@ -28,8 +28,6 @@ public class Login extends BaseActivity implements View.OnClickListener {
         lyPassword = (TextInputLayout) findViewById(R.id.ly_password);
         dataAccessFacade = new DataAccessFacade();
         findViewById(R.id.btn_login).setOnClickListener(this);
-
-        startActivity(Dashboard.getIntentToMe(this));
     }
 
     private void login() {
@@ -43,6 +41,7 @@ public class Login extends BaseActivity implements View.OnClickListener {
         }
         UserInfoMgr.getInstance().setUser(person);
         startActivity(Dashboard.getIntentToMe(this));
+        finish();
     }
 
     @Override
