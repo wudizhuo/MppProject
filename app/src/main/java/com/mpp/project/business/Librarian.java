@@ -24,7 +24,7 @@ public final class Librarian extends Person implements LibrarianRole {
         // Acess the CheckoutRecord
         // Check the book if its available or any copies of it available
         // Make a CheckoutRecordEntry
-        CheckoutRecordEntry entry = new CheckoutRecordEntry(copy, checkoutDate, dueDate);
+        CheckoutRecordEntry entry = new CheckoutRecordEntry(book, copy, checkoutDate, dueDate);
         member.getCheckoutRecord().addEntry(entry);
         //record.addEntry(entry);
 

@@ -13,8 +13,14 @@ import android.widget.Toast;
 
 import com.mpp.project.R;
 import com.mpp.project.business.Book;
+import com.mpp.project.business.CheckoutRecordEntry;
+import com.mpp.project.business.LendableCopy;
 import com.mpp.project.business.LibraryMember;
 import com.mpp.project.dataaccess.DataAccessFacade;
+
+import org.joda.time.DateTime;
+
+import java.util.Date;
 
 public class BookDetail extends BaseActivity implements View.OnClickListener {
 
@@ -24,6 +30,7 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
     private EditText et_memberId;
     private TextView tv_memberInfo;
     private LibraryMember member;
+    private TextView tv_availability;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +49,8 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
 
         ((TextView) findViewById(R.id.tv_isbn)).setText("ISBN:" + book.getIsbn());
         ((TextView) findViewById(R.id.tx_title)).setText("Title:" + book.getTitle());
-        ((TextView) findViewById(R.id.tv_availability)).setText("Availability:" + book.isAvailability());
+        tv_availability = (TextView) findViewById(R.id.tv_availability);
+        tv_availability.setText("Availability:" + book.isAvailability());
         ((TextView) findViewById(R.id.tv_maximumCheckout)).setText("MaximumCheckout:" + book.getMaximumCheckout());
         tv_numberOfCopies = (TextView) findViewById(R.id.tv_numberOfCopies);
         tv_numberOfCopies.setText("NumberOfCopies:" + book.getNumberOfCopies());
@@ -73,9 +81,16 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
             case R.id.btn_query:
                 query();
                 break;
+            case R.id.btn_showRecord:
+                showRecord();
+                break;
             default:
                 break;
         }
+    }
+
+    private void showRecord() {
+        startActivity(CheckoutRecordActivity.getIntentToMe(BookDetail.this));
     }
 
     private void query() {
@@ -98,13 +113,23 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
             lv_memberId.setError("member not found");
             return;
         }
+        if (!book.isAvailability()) {
+            Toast.makeText(this, "book is not available", Toast.LENGTH_SHORT).show();
+        }
 
+        Date dueDate = new DateTime().plusDays(book.getMaximumCheckout()).toDate();
+        LendableCopy lendableCopy = book.checkout();
+        member.getCheckoutRecord().addEntry(new CheckoutRecordEntry(book, lendableCopy, new Date(), dueDate));
+        tv_availability.setText("Availability:" + book.isAvailability());
+
+        new DataAccessFacade().saveBook(book);
+        new DataAccessFacade().savePerson(member);
+
+        Toast.makeText(this, "Check out success", Toast.LENGTH_SHORT).show();
     }
 
     private void addCopy() {
-        int numberOfCopies = Integer.valueOf(book.getNumberOfCopies());
-        numberOfCopies++;
-        book.setNumberOfCopies("" + numberOfCopies);
+        book.addCopy();
         new DataAccessFacade().saveBook(book);
         tv_numberOfCopies.setText("NumberOfCopies:" + book.getNumberOfCopies());
         Toast.makeText(BookDetail.this, "Add Copy Success", Toast.LENGTH_SHORT).show();

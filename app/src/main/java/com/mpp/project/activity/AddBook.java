@@ -16,7 +16,6 @@ import com.mpp.project.business.Author;
 import com.mpp.project.dataaccess.DataAccessFacade;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class AddBook extends BaseActivity implements View.OnClickListener {
@@ -121,7 +120,7 @@ public class AddBook extends BaseActivity implements View.OnClickListener {
         }
 
         DataAccessFacade dataAccessFacade = new DataAccessFacade();
-        com.mpp.project.business.Book book = new com.mpp.project.business.Book(ISBN, title, maximumCheckout, numberOfCopies, new Date(), authors);
+        com.mpp.project.business.Book book = new com.mpp.project.business.Book(ISBN, title, maximumCheckout, numberOfCopies, authors);
         dataAccessFacade.saveBook(book);
         finish();
     }

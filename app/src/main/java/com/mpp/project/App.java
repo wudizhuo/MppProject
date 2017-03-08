@@ -3,9 +3,10 @@ package com.mpp.project;
 import android.app.Application;
 import android.content.Context;
 
-import com.mpp.project.business.Address;
 import com.mpp.project.business.Admin;
 import com.mpp.project.dataaccess.DataAccessFacade;
+
+import net.danlew.android.joda.JodaTimeAndroid;
 
 import java.io.File;
 
@@ -17,6 +18,7 @@ public class App extends Application {
         super.onCreate();
         applicationContext = this.getApplicationContext();
         setupData();
+        JodaTimeAndroid.init(this);
     }
 
     private void setupData() {
