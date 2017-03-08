@@ -10,12 +10,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mpp.project.R;
+import com.mpp.project.business.*;
+import com.mpp.project.business.Book;
 import com.mpp.project.dataaccess.DataAccessFacade;
 
-public class BookDetail extends BaseActivity {
+public class BookDetail extends BaseActivity implements View.OnClickListener {
 
-    private Button btn_addCopy;
     private TextView tv_numberOfCopies;
+    private Book book;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,7 +25,7 @@ public class BookDetail extends BaseActivity {
 
         int isbn = getIntent().getIntExtra("isbn", -1);
         DataAccessFacade dataAccessFacade = new DataAccessFacade();
-        final com.mpp.project.business.Book book = dataAccessFacade.queryBook(isbn);
+        book = dataAccessFacade.queryBook(isbn);
         if (book == null) {
             Toast.makeText(this, "Don't have this book", Toast.LENGTH_SHORT).show();
             finish();
@@ -31,7 +33,6 @@ public class BookDetail extends BaseActivity {
         }
 
         setContentView(R.layout.activity_bookdetail);
-        btn_addCopy = (Button) findViewById(R.id.btn_addCopy);
 
         ((TextView) findViewById(R.id.tv_isbn)).setText("ISBN:" + book.getIsbn());
         ((TextView) findViewById(R.id.tx_title)).setText("Title:" + book.getTitle());
@@ -40,22 +41,40 @@ public class BookDetail extends BaseActivity {
         tv_numberOfCopies = (TextView) findViewById(R.id.tv_numberOfCopies);
         tv_numberOfCopies.setText("NumberOfCopies:" + book.getNumberOfCopies());
 
-        btn_addCopy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int numberOfCopies = Integer.valueOf(book.getNumberOfCopies());
-                numberOfCopies++;
-                book.setNumberOfCopies("" + numberOfCopies);
-                new DataAccessFacade().saveBook(book);
-                tv_numberOfCopies.setText("NumberOfCopies:" + book.getNumberOfCopies());
-                Toast.makeText(BookDetail.this, "Add Copy Success", Toast.LENGTH_SHORT).show();
-            }
-        });
+        findViewById(R.id.btn_addCopy).setOnClickListener(this);
+        findViewById(R.id.btn_checkout).setOnClickListener(this);
     }
 
     public static Intent getIntentToMe(Context context, int isbn) {
         Intent intent = new Intent(context, BookDetail.class);
         intent.putExtra("isbn", isbn);
         return intent;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_addCopy:
+                addCopy();
+                break;
+            case R.id.btn_checkout:
+                checkout();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void checkout() {
+
+    }
+
+    private void addCopy() {
+        int numberOfCopies = Integer.valueOf(book.getNumberOfCopies());
+        numberOfCopies++;
+        book.setNumberOfCopies("" + numberOfCopies);
+        new DataAccessFacade().saveBook(book);
+        tv_numberOfCopies.setText("NumberOfCopies:" + book.getNumberOfCopies());
+        Toast.makeText(BookDetail.this, "Add Copy Success", Toast.LENGTH_SHORT).show();
     }
 }
