@@ -18,10 +18,10 @@ import java.util.Date;
 
 public class AddBook extends BaseActivity implements View.OnClickListener {
 
-    private EditText et_numberOfCopies;
-    private EditText et_maximumCheckout;
-    private EditText tx_title;
     private EditText tx_ISBN;
+    private EditText tx_title;
+    private EditText et_maximumCheckout;
+    private EditText et_numberOfCopies;
     private TextInputLayout ly_numberOfCopies;
     private TextInputLayout ly_maximumCheckout;
     private TextInputLayout ly_title;
@@ -78,20 +78,20 @@ public class AddBook extends BaseActivity implements View.OnClickListener {
             ly_title.setError("please input title");
             return;
         }
-        String numberOfCopies = et_numberOfCopies.getText().toString();
-        if (TextUtils.isEmpty(numberOfCopies)) {
-            ly_numberOfCopies.setError("please input numberOfCopies");
-            return;
-        }
         String maximumCheckout = et_maximumCheckout.getText().toString();
         if (TextUtils.isEmpty(maximumCheckout)) {
             ly_maximumCheckout.setError("please input maximumCheckout");
             return;
         }
+        String numberOfCopies = et_numberOfCopies.getText().toString();
+        if (TextUtils.isEmpty(numberOfCopies)) {
+            ly_numberOfCopies.setError("please input numberOfCopies");
+            return;
+        }
 
         DataAccessFacade dataAccessFacade = new DataAccessFacade();
         ArrayList<Author> authors = new ArrayList<>();
-        com.mpp.project.business.Book book = new com.mpp.project.business.Book(ISBN, title, Integer.valueOf(numberOfCopies), new Date(), authors);
+        com.mpp.project.business.Book book = new com.mpp.project.business.Book(ISBN, title, maximumCheckout, numberOfCopies, new Date(), authors);
         dataAccessFacade.saveBook(book);
         finish();
     }

@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mpp.project.R;
 import com.mpp.project.dataaccess.DataAccessFacade;
 
 public class BookDetail extends BaseActivity {
@@ -22,6 +24,12 @@ public class BookDetail extends BaseActivity {
             return;
         }
 
+        setContentView(R.layout.activity_bookdetail);
+        ((TextView) findViewById(R.id.tv_isbn)).setText("ISBN:" + book.getIsbn());
+        ((TextView) findViewById(R.id.tx_title)).setText("Title:" + book.getTitle());
+        ((TextView) findViewById(R.id.tv_availability)).setText("Availability:" + book.isAvailability());
+        ((TextView) findViewById(R.id.tv_maximumCheckout)).setText("MaximumCheckout:" + book.getMaximumCheckout());
+        ((TextView) findViewById(R.id.tv_numberOfCopies)).setText("NumberOfCopies:" + book.getNumberOfCopies());
     }
 
     public static Intent getIntentToMe(Context context, int isbn) {
