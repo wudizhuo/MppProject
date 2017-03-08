@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.mpp.project.R;
+import com.mpp.project.UserInfoMgr;
 import com.mpp.project.business.Person;
 import com.mpp.project.dataaccess.DataAccessFacade;
 
@@ -40,6 +41,7 @@ public class Login extends BaseActivity implements View.OnClickListener {
             lyPassword.setError(getResources().getString(R.string.msg_empty_user));
             return;
         }
+        UserInfoMgr.getInstance().setUser(person);
         startActivity(Dashboard.getIntentToMe(this));
     }
 
