@@ -34,4 +34,7 @@ public class Book extends Publication implements Serializable {
         return numberOfCopies;
     }
 
+    public void setNumberOfCopies(String numberOfCopies) {
+        this.numberOfCopies = numberOfCopies;
+    }
 }
