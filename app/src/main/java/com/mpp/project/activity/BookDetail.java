@@ -4,20 +4,26 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mpp.project.R;
-import com.mpp.project.business.*;
 import com.mpp.project.business.Book;
+import com.mpp.project.business.LibraryMember;
 import com.mpp.project.dataaccess.DataAccessFacade;
 
 public class BookDetail extends BaseActivity implements View.OnClickListener {
 
     private TextView tv_numberOfCopies;
     private Book book;
+    private TextInputLayout lv_memberId;
+    private EditText et_memberId;
+    private TextView tv_memberInfo;
+    private LibraryMember member;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +47,10 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
         tv_numberOfCopies = (TextView) findViewById(R.id.tv_numberOfCopies);
         tv_numberOfCopies.setText("NumberOfCopies:" + book.getNumberOfCopies());
 
+        et_memberId = (EditText) findViewById(R.id.et_memberId);
+        lv_memberId = (TextInputLayout) findViewById(R.id.lv_memberId);
+        tv_memberInfo = (TextView) findViewById(R.id.tv_memberInfo);
+
         findViewById(R.id.btn_addCopy).setOnClickListener(this);
         findViewById(R.id.btn_checkout).setOnClickListener(this);
     }
@@ -60,12 +70,34 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
             case R.id.btn_checkout:
                 checkout();
                 break;
+            case R.id.btn_query:
+                query();
+                break;
             default:
                 break;
         }
     }
 
+    private void query() {
+        String memberIdStr = et_memberId.getText().toString();
+        if (TextUtils.isEmpty(memberIdStr)) {
+            lv_memberId.setError("please input value");
+            return;
+        }
+        int memberId = Integer.parseInt(memberIdStr);
+        member = (LibraryMember) new DataAccessFacade().readPerson(memberId);
+        if (member == null) {
+            lv_memberId.setError("member not found");
+            return;
+        }
+        tv_memberInfo.setText(member.toString());
+    }
+
     private void checkout() {
+        if (member == null) {
+            lv_memberId.setError("member not found");
+            return;
+        }
 
     }
 

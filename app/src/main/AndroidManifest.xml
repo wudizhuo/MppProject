@@ -20,7 +20,7 @@
         <activity android:name=".activity.Dashboard" />
         <activity
             android:name=".activity.Book"
-            android:label="Add Book" />
+            android:label="Book" />
         <activity
             android:name=".activity.AddBook"
             android:label="Add Book" />
