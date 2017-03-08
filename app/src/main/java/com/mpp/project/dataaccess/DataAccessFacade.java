@@ -32,7 +32,7 @@ public class DataAccessFacade implements DataAccess {
 
     @Override
     public void saveBook(Book book) {
-        File file = new File(getDataDir(), "book" + book.getId());
+        File file = new File(getDataDir(), "book" + book.getIsbn());
         FileStorageUtil.writeObject(file, book);
     }
 }

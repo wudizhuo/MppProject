@@ -11,7 +11,7 @@ abstract public class Publication implements Serializable {
 	private String title;
 	private List<Author> authorList;
 
-	public Publication(List<Author> authorList, Date dateDue, String title) {
+	public Publication(String title, Date dateDue, List<Author> authorList) {
 		this.authorList = authorList;
 		this.dateDue = dateDue;
 		this.title = title;

@@ -17,6 +17,15 @@ public abstract class Person implements Serializable{
     private String phoneNo;
     private Address address;
 
+    public Person(int userId, String firstName, String lastName, String passWord, String phoneNo, Address address) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passWord = passWord;
+        this.phoneNo = phoneNo;
+        this.address = address;
+    }
+
     public Person(String firstName, String lastName, String passWord, String phoneNo, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
