@@ -24,6 +24,9 @@
         <activity
             android:label="Add Book"
             android:name=".activity.AddBook"/>
+        <activity
+            android:label="Book Detail"
+            android:name=".activity.BookDetail"/>
 
     </application>
 

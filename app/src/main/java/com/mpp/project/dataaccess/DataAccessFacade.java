@@ -35,4 +35,10 @@ public class DataAccessFacade implements DataAccess {
         File file = new File(getDataDir(), "book" + book.getIsbn());
         FileStorageUtil.writeObject(file, book);
     }
+
+    @Override
+    public Book queryBook(int ISBN) {
+        File file = new File(getDataDir(), "book" + ISBN);
+        return (Book) FileStorageUtil.readObject(file);
+    }
 }

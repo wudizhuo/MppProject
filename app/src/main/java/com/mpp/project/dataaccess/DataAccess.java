@@ -10,4 +10,6 @@ public interface DataAccess {
     public Person readPerson(int userId);
 
     public void saveBook(Book book);
+
+    public Book queryBook(int ISBN);
 }
