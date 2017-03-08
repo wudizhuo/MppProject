@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 public class LendableCopy implements Serializable {
 	private Publication publication;
-	private int copyId; 
+	private int copyId;
+	private boolean available;
+	public void isAvailable(boolean b) {
+		available = b;
+	}
 	public void setPublication(Publication publication) {
 		this.publication = publication;
 	}

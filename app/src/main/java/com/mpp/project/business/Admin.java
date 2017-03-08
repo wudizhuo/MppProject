@@ -5,12 +5,22 @@ package com.mpp.project.business;
  */
 
 public final class Admin extends Person implements AdminRole {
-    public Admin(int userId, String firstName, String lastName, String passWord, String phoneNo, Address address) {
-        super(userId, firstName, lastName, passWord, phoneNo, address);
+    private String adminId;
+    public Admin(String firstName, String lastName, String passWord, String phoneNo, Address address) {
+        super(firstName, lastName, passWord, phoneNo, address);
+        this.adminId = "A"+getUserId();
     }
 
     @Override
     public void add(Object item) {
+        // Template design pattern can be used here
+        if(item instanceof Book){
+            // TODO: Check the object structure to create before adding a book into the system
+        } else if(item instanceof Author){
+
+        } else if(item instanceof Librarian){
+
+        } //else if()
 
     }
 

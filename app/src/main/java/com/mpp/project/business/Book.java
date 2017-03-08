@@ -3,19 +3,18 @@ package com.mpp.project.business;
 import java.io.Serializable;
 
 public class Book extends Publication implements Serializable {
-	private int id;
+	private static int id;
 	private String isbn;
-	private boolean available;
-	public Book(int id, String isbn, String title) {
+
+	// TODO: Where do we keep the number of copies? NO In publication
+	public Book(String isbn, String title) {
 		super(title);
-		this.id = id;
 		this.isbn = isbn;
+		id++; // Increase the ID of the instance of each book so this ID mataches the Lendable copyId
 	}
-	public void isAvailable(boolean b) {
-		available = b;
-	}
+
 	@Override
 	public String toString() {
-		return "id: " + id + ", isbn: " + isbn + ", available: " + available;
+		return "id: " + id + ", isbn: " + isbn; /*+ ", available: " + available;*/
 	}
 }
