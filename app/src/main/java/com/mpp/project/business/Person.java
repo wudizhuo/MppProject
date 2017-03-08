@@ -26,6 +26,14 @@ public abstract class Person implements Serializable{
         this.address = address;
     }
 
+    public Person(int userId, String firstName, String lastName, String passWord, String phoneNo) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passWord = passWord;
+        this.phoneNo = phoneNo;
+    }
+
     public Person(String firstName, String lastName, String passWord, String phoneNo, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +42,13 @@ public abstract class Person implements Serializable{
         this.address = address;
 
         this.userId = MySequence.createId(ID_NUMBER_SIZE);
+    }
+
+    public Person(String firstName, String lastName, String phoneNo, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNo = phoneNo;
+        this.address = address;
     }
 
     public int getUserId() {

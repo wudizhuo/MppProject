@@ -5,12 +5,14 @@ package com.mpp.project.business;
  */
 
 public final class Author extends Person {
-
+    private String credentials;
     private String shortBio;
     private String authorId;
 
-    public Author(int userId, String firstName, String lastName, String passWord, String phoneNo, Address address) {
-        super(firstName, lastName, passWord, phoneNo, address);
+    public Author(String firstName, String lastName, String phoneNo, Address address, String credentials, String shortBio) {
+        super(firstName, lastName, phoneNo, address);
+        this.credentials = credentials;
+        this.shortBio = shortBio;
         this.authorId = "AU"+getUserId();
 
     }

@@ -29,7 +29,7 @@ public class App extends Application {
             appDir.mkdirs();
         }
 
-        Admin admin = new Admin(001, "firstName", "lastName", "password", "phoneNo", new Address());
+        Admin admin = new Admin(001, "firstName", "lastName", "password", "phoneNo");
         dataAccessFacade.savePerson(admin);
 
         AppPreferences.setHasSetupFile();

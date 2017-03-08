@@ -6,19 +6,17 @@ import java.io.Serializable;
  * Created by prageeth on 3/6/17.
  */
 
-public class Address implements Serializable{
-    private String number;
+public class Address implements Serializable {
     private String street;
     private String city;
     private String zip;
-    private String country;
+    private String state;
 
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
+    public Address(String street, String city, String state, String zip) {
+        this.street = street;
+        this.city = city;
+        this.zip = zip;
+        this.state = state;
     }
 
     public String getStreet() {
@@ -45,11 +43,11 @@ public class Address implements Serializable{
         this.zip = zip;
     }
 
-    public String getCountry() {
-        return country;
+    public String getState() {
+        return state;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setState(String state) {
+        this.state = state;
     }
 }

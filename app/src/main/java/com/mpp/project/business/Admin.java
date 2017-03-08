@@ -5,8 +5,8 @@ package com.mpp.project.business;
  */
 
 public final class Admin extends Person implements AdminRole {
-    public Admin(int userId, String firstName, String lastName, String passWord, String phoneNo, Address address) {
-        super(userId, firstName, lastName, passWord, phoneNo, address);
+    public Admin(int userId, String firstName, String lastName, String passWord, String phoneNo) {
+        super(userId, firstName, lastName, passWord, phoneNo);
     }
 
     @Override

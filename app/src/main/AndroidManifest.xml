@@ -17,16 +17,19 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.Dashboard"/>
+        <activity android:name=".activity.Dashboard" />
         <activity
-            android:label="Add Book"
-            android:name=".activity.Book"/>
+            android:name=".activity.Book"
+            android:label="Add Book" />
         <activity
-            android:label="Add Book"
-            android:name=".activity.AddBook"/>
+            android:name=".activity.AddBook"
+            android:label="Add Book" />
         <activity
-            android:label="Book Detail"
-            android:name=".activity.BookDetail"/>
+            android:name=".activity.BookDetail"
+            android:label="Book Detail" />
+        <activity
+            android:name=".activity.AddAuthor"
+            android:label="Add Author" />
 
     </application>
 
