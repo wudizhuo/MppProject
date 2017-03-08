@@ -15,4 +15,20 @@ public class CheckoutRecordEntry implements Serializable {
         this.checkoutDate = checkoutDate;
         this.dueDate = dueDate;
     }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public LendableCopy getCopy() {
+        return copy;
+    }
+
+    public Date getCheckoutDate() {
+        return checkoutDate;
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
 }

@@ -103,9 +103,9 @@ public class AddBook extends BaseActivity implements View.OnClickListener {
             ly_title.setError("please input title");
             return;
         }
-        String maximumCheckout = et_maximumCheckout.getText().toString();
-        if (TextUtils.isEmpty(maximumCheckout)) {
-            ly_maximumCheckout.setError("please input maximumCheckout");
+        String maximumCheckout = et_maximumCheckout.getText().toString().trim();
+        if (TextUtils.isEmpty(maximumCheckout) || !maximumCheckout.equals("7") || !maximumCheckout.equals("21")) {
+            ly_maximumCheckout.setError("please input right maximumCheckout");
             return;
         }
         String numberOfCopies = et_numberOfCopies.getText().toString();

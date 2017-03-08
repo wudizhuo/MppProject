@@ -14,11 +14,9 @@ import java.util.List;
 public class CheckoutRecordAdapter extends BaseAdapter {
     private List<CheckoutRecordEntry> list;
     private LayoutInflater mInflater;
-    private Context mContext;
 
     public CheckoutRecordAdapter(Context mContext, List<CheckoutRecordEntry> list) {
         this.list = list;
-        this.mContext = mContext;
         mInflater = LayoutInflater.from(mContext);
     }
 
@@ -40,7 +38,7 @@ public class CheckoutRecordAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        final CheckoutRecordEntry info = list.get(position);
+        final CheckoutRecordEntry entry = list.get(position);
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = mInflater.inflate(R.layout.item_checkout_record, null);
@@ -56,7 +54,10 @@ public class CheckoutRecordAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-//        holder.tv_title.setText("ISBN:" + book.getIsbn());
+        holder.tv_title.setText("Title:" + entry.getBook().getTitle());
+        holder.tv_isbn.setText("ISBN:" + entry.getBook().getIsbn());
+        holder.tv_borrowDate.setText("CheckoutDate: " + entry.getCheckoutDate());
+        holder.tv_dueDate.setText("DueDate: " + entry.getDueDate());
         return convertView;
     }
 

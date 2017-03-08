@@ -68,9 +68,10 @@
 
             <TextView
                 android:id="@+id/tv_authors"
-                android:text="Authors: "
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Authors: " />
 
             <Button
                 android:id="@+id/btn_addAuthor"
