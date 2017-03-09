@@ -41,7 +41,8 @@ public class App extends Application {
         dataAccessFacade.savePerson(superAdmin);
         Admin admin = new Admin(002, "firstName", "lastName", "password", "phoneNo");
         dataAccessFacade.savePerson(admin);
-
+        // TODO:A librarian has to checkout a book? So we need a librarian. If we use UserInfoMgr.getInstance().getUser(), we have to upcast it?
+        // So i extended the Admin, not Person in the SuperAdmin class so had to make Admin not final.
         LibraryMember member = new LibraryMember(100, "LibraryMember-firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));
         dataAccessFacade.savePerson(member);
 

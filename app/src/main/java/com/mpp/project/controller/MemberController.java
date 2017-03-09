@@ -5,6 +5,7 @@ import com.mpp.project.business.AdminRole;
 import com.mpp.project.business.Librarian;
 import com.mpp.project.business.LibraryMember;
 import com.mpp.project.business.Person;
+import com.mpp.project.business.SuperAdmin;
 
 import java.util.HashMap;
 
@@ -17,7 +18,10 @@ public final class MemberController {
     // When this method get call, it should call on the instance associated with the AdminRole
     public String addLibraryMember(Person executor, HashMap<String, String> memberDetails) throws Exception{
         String result = "";
-        if(executor instanceof Admin) {
+        if(executor instanceof SuperAdmin){
+            SuperAdmin superAdmin = (SuperAdmin) executor;
+            result = superAdmin.add(null,memberDetails);
+        } else if(executor instanceof Admin) {
             Admin admin = (Admin) executor;
             //result = admin.add(admin.level, memberDetails); // Add an admin user like this
             result = admin.add(null, memberDetails);

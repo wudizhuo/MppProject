@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class LibraryMember extends Person implements Serializable {
 
     private static final long serialVersionUID = -2226197306790714013L;
-    private int memberId;
+    //private int memberId;
     private CheckoutRecord checkoutRecord; // 1 to 1
 
     @Override
@@ -27,9 +27,9 @@ public class LibraryMember extends Person implements Serializable {
         return checkoutRecord;
     }
 
-	public int getMemberId() {
-		return memberId;
-	}
+//	public int getMemberId() {
+//		return memberId;
+//	}
     public void setCheckoutRecord(CheckoutRecord checkoutRecord) {
         this.checkoutRecord = checkoutRecord;
     }

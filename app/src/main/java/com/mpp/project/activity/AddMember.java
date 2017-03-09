@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mpp.project.R;
 import com.mpp.project.UserInfoMgr;
@@ -154,14 +155,22 @@ public class AddMember extends BaseActivity implements View.OnClickListener {
         try {
             newMemberId = memberController.addLibraryMember(UserInfoMgr.getInstance().getUser(), values);
             // TODO: if newMemberId exist already, we need to show that it was unsuccessful
-            if(newMemberId!=null){
+            if(newMemberId!=null && !"".equals(newMemberId)){
+                Toast.makeText(this, "Member added. Member Id:"+newMemberId, Toast.LENGTH_SHORT).show();
                 tv_lmStatus.setVisibility(View.VISIBLE);
                 tv_lmStatus.setTextColor(getResources().getColor(R.color.color_blue));
                 tv_lmStatus.setText("Member ID : "+newMemberId);
                 clearAllFieds(); // Clear out all values so you can add a new member
+                tv_lmStatus.findFocus();
+                btnAdd.setText("Add Another");
+            } else{
+                Toast.makeText(this, "Adding member failed.", Toast.LENGTH_SHORT).show();
+                tv_lmMemberId.findFocus();
             }
         } catch (Exception e){
-            tv_lmStatus.append(e.getMessage());
+            tv_lmStatus.setVisibility(View.VISIBLE);
+            tv_lmStatus.setTextColor(getResources().getColor(R.color.color_red));
+            tv_lmStatus.setText(e.getMessage());
         } finally {
             memberController = null;
             values.clear();

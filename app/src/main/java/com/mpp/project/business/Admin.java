@@ -8,7 +8,7 @@ import java.util.HashMap;
  * Created by prageeth on 3/7/17.
  */
 
-public final class Admin extends Person implements AdminRole {
+public class Admin extends Person implements AdminRole {
     private IRole role;
 
     @Override
@@ -51,7 +51,7 @@ public final class Admin extends Person implements AdminRole {
             /*
              First before saving we query if the member id is there. If so we will return an error. We don't cover this scenario at the moment
               */
-            result = ""+libraryMember.getMemberId(); // TODO: DECIDE either int or string for MEMBER ID
+            result = ""+libraryMember.getUserId(); // TODO: DECIDE either int or string for MEMBER ID
         } else if(level == Level.ADMIN){
             // admin process
         } else if(level == Level.LIBRARIAN){
