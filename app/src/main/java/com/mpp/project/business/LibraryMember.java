@@ -8,8 +8,8 @@ public class LibraryMember extends Person implements Serializable {
     private int memberId;
     private CheckoutRecord checkoutRecord; // 1 to 1
 
-    public LibraryMember(int memberId, String firstName, String lastName, String passWord, String phoneNo, Address address) {
-        super(memberId, firstName, lastName, passWord, phoneNo, address);
+    public LibraryMember(int memberId, String firstName, String lastName, String password, String phoneNo, Address address) {
+        super(memberId, firstName, lastName, password, phoneNo, address);
         checkoutRecord = new CheckoutRecord();
     }
 
@@ -22,6 +22,9 @@ public class LibraryMember extends Person implements Serializable {
         return checkoutRecord;
     }
 
+	public int getMemberId() {
+		return memberId;
+	}
     public void setCheckoutRecord(CheckoutRecord checkoutRecord) {
         this.checkoutRecord = checkoutRecord;
     }

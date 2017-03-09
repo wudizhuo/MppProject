@@ -31,6 +31,8 @@
             android:name=".activity.AddAuthor"
             android:label="Add Author" />
 
+        <activity android:name=".activity.Memebers" />
+        <activity android:name=".activity.AddMember"></activity>
         <activity
             android:name=".activity.CheckoutRecordActivity"
             android:label="Checkout Record" />

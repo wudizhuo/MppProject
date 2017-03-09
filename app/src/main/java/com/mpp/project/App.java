@@ -39,11 +39,11 @@ public class App extends Application {
         Admin admin = new Admin(001, "firstName", "lastName", "password", "phoneNo");
         dataAccessFacade.savePerson(admin);
 
-        LibraryMember member = new LibraryMember(100, "LibraryMember-firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip"));
+        LibraryMember member = new LibraryMember(100, "LibraryMember-firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));
         dataAccessFacade.savePerson(member);
 
         ArrayList<Author> authors = new ArrayList<>();
-        authors.add(new Author("firstName", "lastName", "phoneNo", new Address("street", "city", "state", "zip"), "credentials", "bio"));
+        authors.add(new Author("firstName", "lastName", "phoneNo", new Address("street", "city", "state", "zip", "country"), "credentials", "bio"));
         Book book = new Book("1001", "MPP-C++", "7", "5", authors);
         Book book2 = new Book("1002", "MPP-C++", "7", "5", authors);
 

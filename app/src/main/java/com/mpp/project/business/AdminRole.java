@@ -11,7 +11,7 @@ public interface AdminRole extends IRole{
 //    public LibraryMember updateLibraryMember(LibraryMember libraryMember);
 //    public void removeLibraryMember(LibraryMember libraryMember);
     // Not specific since admin role should be able to handle anything inside the sytem
-    public void add(Object item);
+    public String add(Object item);
     public Object update(Object item);
     public void remove(Object item);
 

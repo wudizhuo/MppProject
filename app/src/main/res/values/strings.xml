@@ -3,5 +3,5 @@
     <string name="hint_userId">User Id</string>
     <string name="hint_password">Password</string>
     <string name="btn_login">LOG IN</string>
-    <string name="msg_empty_user">User name or Password is incorrectly</string>
+    <string name="msg_empty_user">User name or password is incorrect</string>
 </resources>

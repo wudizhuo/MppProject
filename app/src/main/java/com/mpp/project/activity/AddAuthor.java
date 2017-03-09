@@ -139,7 +139,7 @@ public class AddAuthor extends BaseActivity implements View.OnClickListener {
         }
 
         Intent data = new Intent();
-        Address address1 = new Address(street, city, state, zip);
+        Address address1 = new Address(street, city, state, zip, "US");
         Author author = new Author(firstName, lastName, phonenumber, address1, credentials, bio);
         data.putExtra("author", author);
         setResult(RESULT_OK, data);

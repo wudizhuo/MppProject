@@ -11,12 +11,14 @@ public class Address implements Serializable {
     private String city;
     private String zip;
     private String state;
+    private String country;
 
-    public Address(String street, String city, String state, String zip) {
+    public Address(String street, String city, String state, String zip, String country) {
         this.street = street;
         this.city = city;
         this.zip = zip;
         this.state = state;
+        this.country = country;
     }
 
     public String getStreet() {
@@ -49,5 +51,13 @@ public class Address implements Serializable {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

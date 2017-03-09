@@ -15,20 +15,24 @@ public final class Librarian extends Person implements LibrarianRole {
         librarianId = "L"+getUserId();
     }
 
-    @Override
-    public Book checkoutBook(LibraryMember member) {
-        return null;
-    }
+
+
+//    @Override
+//    public Book checkoutBook(LibraryMember member) {
+//        return null;
+//    }
 
     public void checkout(LibraryMember member, LendableCopy copy, Date checkoutDate, Date dueDate) {
         // Acess the CheckoutRecord
         // Check the book if its available or any copies of it available
         // Make a CheckoutRecordEntry
-//        CheckoutRecordEntry entry = new CheckoutRecordEntry(book, copy, checkoutDate, dueDate);
-//        member.getCheckoutRecord().addEntry(entry);
-        //record.addEntry(entry);
 
+        //CheckoutRecordEntry entry = new CheckoutRecordEntry(book, copy, checkoutDate, dueDate);
+        //member.getCheckoutRecord().addEntry(entry);
+        //record.addEntry(entry);
     }
+
+
     @Override
     public void checkinBook(LibraryMember member) {
 
@@ -43,4 +47,13 @@ public final class Librarian extends Person implements LibrarianRole {
     public IRole getRole() {
         return rolePlaying;
     }
+
+    @Override
+    public Book checkoutBook(LibraryMember member, LendableCopy copy, Date checkoutDate, Date dueDate) {
+//        CheckoutRecordEntry entry = new CheckoutRecordEntry(copy, checkoutDate, dueDate);
+//        member.getCheckoutRecord().addEntry(entry);
+        return null;
+    }
+
+
 }
