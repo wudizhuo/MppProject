@@ -64,6 +64,10 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
         if (UserInfoMgr.getInstance().getUser().getAuthorizationLevel().equals(Person.AuthorizationLevel.ADMIN)) {
             findViewById(R.id.cv_checkout).setVisibility(View.GONE);
         }
+
+        if (UserInfoMgr.getInstance().getUser().getAuthorizationLevel().equals(Person.AuthorizationLevel.LIBRARIAN)) {
+            findViewById(R.id.btn_addCopy).setVisibility(View.GONE);
+        }
     }
 
     public static Intent getIntentToMe(Context context, int isbn) {
