@@ -1,5 +1,8 @@
 package com.mpp.project.controller;
 
+import android.widget.Toast;
+
+import com.mpp.project.App;
 import com.mpp.project.business.Author;
 import com.mpp.project.business.Book;
 import com.mpp.project.business.CheckoutRecordEntry;
@@ -27,6 +30,10 @@ public class BookController {
     public void checkout(Book book, LibraryMember member) {
         Date dueDate = new DateTime().plusDays(book.getMaximumCheckout()).toDate();
         LendableCopy lendableCopy = book.checkout();
+        if (lendableCopy == null) {
+            Toast.makeText(App.getContext(), "This book is not available for check out", Toast.LENGTH_SHORT).show();
+            return;
+        }
         member.getCheckoutRecord().addEntry(new CheckoutRecordEntry(book, lendableCopy, new Date(), dueDate));
         dataAccessFacade.saveBook(book);
         dataAccessFacade.savePerson(member);

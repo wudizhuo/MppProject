@@ -17,6 +17,7 @@ import com.mpp.project.business.Book;
 import com.mpp.project.business.LibraryMember;
 import com.mpp.project.business.Person;
 import com.mpp.project.controller.BookController;
+import com.mpp.project.controller.MemberController;
 import com.mpp.project.dataaccess.DataAccessFacade;
 
 public class BookDetail extends BaseActivity implements View.OnClickListener {
@@ -29,6 +30,7 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
     private LibraryMember member;
     private TextView tv_availability;
     private BookController bookController;
+    private MemberController memberController;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
 
         setContentView(R.layout.activity_bookdetail);
         bookController = new BookController();
+        memberController = new MemberController();
         ((TextView) findViewById(R.id.tv_isbn)).setText("ISBN:" + book.getIsbn());
         ((TextView) findViewById(R.id.tx_title)).setText("Title:" + book.getTitle());
         tv_availability = (TextView) findViewById(R.id.tv_availability);
@@ -104,7 +107,8 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
             return;
         }
         int memberId = Integer.parseInt(memberIdStr);
-        member = (LibraryMember) new DataAccessFacade().readPerson(memberId);
+        member = (LibraryMember) memberController.readPerson(memberId);
+
         if (member == null) {
             lv_memberId.setError("member not found");
             return;

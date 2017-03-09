@@ -6,6 +6,7 @@ import com.mpp.project.business.Librarian;
 import com.mpp.project.business.LibraryMember;
 import com.mpp.project.business.Person;
 import com.mpp.project.business.SuperAdmin;
+import com.mpp.project.dataaccess.DataAccessFacade;
 
 import java.util.HashMap;
 
@@ -41,5 +42,14 @@ public final class MemberController {
 
     public LibraryMember updateLibraryMember(String libraryMemberId){
         return null; //TODO: Search by the id and update the member, if not found throw an exception
+    }
+
+    public Person readPerson(int memberId) {
+        return new DataAccessFacade().readPerson(memberId);
+    }
+
+    public LibraryMember getLibraryMember(int memberId) {
+        DataAccessFacade dataAccessFacade = new DataAccessFacade();
+        return (LibraryMember) dataAccessFacade.readPerson(memberId);
     }
 }
