@@ -47,6 +47,7 @@ public class CheckoutRecordAdapter extends BaseAdapter {
             holder.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
             holder.tv_borrowDate = (TextView) convertView.findViewById(R.id.tv_borrowDate);
             holder.tv_dueDate = (TextView) convertView.findViewById(R.id.tv_dueDate);
+            holder.tv_copyId = (TextView) convertView.findViewById(R.id.tv_copyId);
 
             convertView.setTag(holder);
 
@@ -58,6 +59,7 @@ public class CheckoutRecordAdapter extends BaseAdapter {
         holder.tv_isbn.setText("ISBN:" + entry.getBook().getIsbn());
         holder.tv_borrowDate.setText("CheckoutDate: " + entry.getCheckoutDate());
         holder.tv_dueDate.setText("DueDate: " + entry.getDueDate());
+        holder.tv_copyId.setText("CopyId: " + entry.getCopy().getCopyId());
         return convertView;
     }
 
@@ -66,6 +68,7 @@ public class CheckoutRecordAdapter extends BaseAdapter {
         TextView tv_isbn;
         TextView tv_borrowDate;
         TextView tv_dueDate;
+        TextView tv_copyId;
     }
 
 }

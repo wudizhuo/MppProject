@@ -11,6 +11,10 @@ public class LendableCopy implements Serializable {
         this.available = available;
     }
 
+    public String getCopyId() {
+        return copyId;
+    }
+
     public void setAvailable(boolean available) {
         this.available = available;
     }
