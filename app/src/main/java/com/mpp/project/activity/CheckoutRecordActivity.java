@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.mpp.project.CheckoutRecordAdapter;
 import com.mpp.project.R;
 import com.mpp.project.business.LibraryMember;
-import com.mpp.project.dataaccess.DataAccessFacade;
+import com.mpp.project.controller.PersonController;
 
 public class CheckoutRecordActivity extends BaseActivity {
 
@@ -19,8 +19,8 @@ public class CheckoutRecordActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         int memberId = getIntent().getIntExtra("memberId", -1);
-        DataAccessFacade dataAccessFacade = new DataAccessFacade();
-        LibraryMember member = (LibraryMember) dataAccessFacade.readPerson(memberId);
+        PersonController personController = new PersonController();
+        LibraryMember member = personController.getLibraryMember(memberId);
         if (member == null) {
             Toast.makeText(this, "Don't have this member", Toast.LENGTH_SHORT).show();
             finish();

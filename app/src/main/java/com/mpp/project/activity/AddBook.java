@@ -12,8 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mpp.project.R;
-import com.mpp.project.business.*;
-import com.mpp.project.dataaccess.DataAccessFacade;
+import com.mpp.project.business.Author;
+import com.mpp.project.controller.BookController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -118,15 +118,15 @@ public class AddBook extends BaseActivity implements View.OnClickListener {
             Toast.makeText(this, "Please input Authors", Toast.LENGTH_SHORT).show();
             return;
         }
+        BookController bookController = new BookController();
+        com.mpp.project.business.Book queryBook = bookController.queryBook(ISBN);
 
-        DataAccessFacade dataAccessFacade = new DataAccessFacade();
-        if(dataAccessFacade.queryBook(ISBN) !=null){
+        if (queryBook != null) {
             Toast.makeText(this, "ISBN is already exists", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        com.mpp.project.business.Book book = new com.mpp.project.business.Book(ISBN, title, maximumCheckout, numberOfCopies, authors);
-        dataAccessFacade.saveBook(book);
+        bookController.saveBook(ISBN, title, maximumCheckout, numberOfCopies, authors);
         finish();
     }
 }

@@ -14,15 +14,10 @@ import android.widget.Toast;
 import com.mpp.project.R;
 import com.mpp.project.UserInfoMgr;
 import com.mpp.project.business.Book;
-import com.mpp.project.business.CheckoutRecordEntry;
-import com.mpp.project.business.LendableCopy;
 import com.mpp.project.business.LibraryMember;
 import com.mpp.project.business.Person;
+import com.mpp.project.controller.BookController;
 import com.mpp.project.dataaccess.DataAccessFacade;
-
-import org.joda.time.DateTime;
-
-import java.util.Date;
 
 public class BookDetail extends BaseActivity implements View.OnClickListener {
 
@@ -33,6 +28,7 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
     private TextView tv_memberInfo;
     private LibraryMember member;
     private TextView tv_availability;
+    private BookController bookController;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,7 +44,7 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
         }
 
         setContentView(R.layout.activity_bookdetail);
-
+        bookController = new BookController();
         ((TextView) findViewById(R.id.tv_isbn)).setText("ISBN:" + book.getIsbn());
         ((TextView) findViewById(R.id.tx_title)).setText("Title:" + book.getTitle());
         tv_availability = (TextView) findViewById(R.id.tv_availability);
@@ -121,13 +117,9 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
             Toast.makeText(this, "book is not available", Toast.LENGTH_SHORT).show();
         }
 
-        Date dueDate = new DateTime().plusDays(book.getMaximumCheckout()).toDate();
-        LendableCopy lendableCopy = book.checkout();
-        member.getCheckoutRecord().addEntry(new CheckoutRecordEntry(book, lendableCopy, new Date(), dueDate));
-        tv_availability.setText("Availability:" + book.isAvailability());
+        bookController.checkout(this.book, member);
 
-        new DataAccessFacade().saveBook(book);
-        new DataAccessFacade().savePerson(member);
+        tv_availability.setText("Availability:" + book.isAvailability());
 
         Toast.makeText(this, "Check out success", Toast.LENGTH_SHORT).show();
         showRecord(member.getUserId());
@@ -135,9 +127,9 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
     }
 
     private void addCopy() {
-        book.addCopy();
-        new DataAccessFacade().saveBook(book);
+        bookController.addCopy(book);
         tv_numberOfCopies.setText("NumberOfCopies:" + book.getNumberOfCopies());
         Toast.makeText(BookDetail.this, "Add Copy Success", Toast.LENGTH_SHORT).show();
     }
+
 }
