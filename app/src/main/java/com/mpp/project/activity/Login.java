@@ -8,6 +8,7 @@ import android.widget.EditText;
 import com.mpp.project.R;
 import com.mpp.project.UserInfoMgr;
 import com.mpp.project.business.Person;
+import com.mpp.project.controller.MemberController;
 import com.mpp.project.dataaccess.DataAccessFacade;
 
 public class Login extends BaseActivity implements View.OnClickListener {
@@ -34,7 +35,9 @@ public class Login extends BaseActivity implements View.OnClickListener {
         lyPassword.setErrorEnabled(false);
         int userId = Integer.parseInt(tx_userId.getText().toString());
         String password = tx_password.getText().toString();
-        Person person = dataAccessFacade.readPerson(userId);
+
+        MemberController memberController = new MemberController();
+        Person person = memberController.readPerson(userId);
         if (person == null || !password.equals(person.getPassWord())) {
             lyPassword.setError(getResources().getString(R.string.msg_empty_user));
             return;
