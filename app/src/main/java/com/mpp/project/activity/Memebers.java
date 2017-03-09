@@ -1,7 +1,5 @@
 package com.mpp.project.activity;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,8 +36,7 @@ public class Memebers extends BaseActivity implements View.OnClickListener{
                 //loginOut();
                 break;
             case R.id.btn_add_library_members:
-                Intent i = new Intent(this, AddMember.class);
-                startActivity(i);
+                startActivity(LibraryMemberActivity.getIntentToMe(Memebers.this));
                 break;
             default:
                 break;

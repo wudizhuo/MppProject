@@ -17,16 +17,16 @@
             android:padding="10dp">
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/lv_isbn"
+                android:id="@+id/lv_memberId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_normal">
 
                 <EditText
-                    android:id="@+id/et_isbn"
+                    android:id="@+id/et_memberId"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:hint="ISBN"
+                    android:hint="MemberId"
                     android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
@@ -44,13 +44,13 @@
 
 
     <Button
-        android:id="@+id/btn_addBook"
+        android:id="@+id/btn_addMember"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@color/color_teal"
-        android:text="Add Book"
+        android:text="Add Member"
         android:textColor="@color/color_white" />
 
 </LinearLayout>
