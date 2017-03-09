@@ -15,7 +15,10 @@ public final class Librarian extends Person implements LibrarianRole {
         librarianId = "L"+getUserId();
     }
 
-
+    @Override
+    public AuthorizationLevel getAuthorizationLevel() {
+        return AuthorizationLevel.LIBRARIAN;
+    }
 
 //    @Override
 //    public Book checkoutBook(LibraryMember member) {

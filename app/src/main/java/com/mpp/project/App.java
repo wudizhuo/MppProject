@@ -8,6 +8,7 @@ import com.mpp.project.business.Admin;
 import com.mpp.project.business.Author;
 import com.mpp.project.business.Book;
 import com.mpp.project.business.LibraryMember;
+import com.mpp.project.business.SuperAdmin;
 import com.mpp.project.dataaccess.DataAccessFacade;
 
 import net.danlew.android.joda.JodaTimeAndroid;
@@ -36,7 +37,9 @@ public class App extends Application {
             appDir.mkdirs();
         }
 
-        Admin admin = new Admin(001, "firstName", "lastName", "password", "phoneNo");
+        SuperAdmin superAdmin = new SuperAdmin(001, "super", "Admin", "password", "phoneNo");
+        dataAccessFacade.savePerson(superAdmin);
+        Admin admin = new Admin(002, "firstName", "lastName", "password", "phoneNo");
         dataAccessFacade.savePerson(admin);
 
         LibraryMember member = new LibraryMember(100, "LibraryMember-firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));

@@ -12,10 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mpp.project.R;
+import com.mpp.project.UserInfoMgr;
 import com.mpp.project.business.Book;
 import com.mpp.project.business.CheckoutRecordEntry;
 import com.mpp.project.business.LendableCopy;
 import com.mpp.project.business.LibraryMember;
+import com.mpp.project.business.Person;
 import com.mpp.project.dataaccess.DataAccessFacade;
 
 import org.joda.time.DateTime;
@@ -62,6 +64,10 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_addCopy).setOnClickListener(this);
         findViewById(R.id.btn_query).setOnClickListener(this);
         findViewById(R.id.btn_checkout).setOnClickListener(this);
+
+        if (UserInfoMgr.getInstance().getUser().getAuthorizationLevel().equals(Person.AuthorizationLevel.ADMIN)) {
+            findViewById(R.id.cv_checkout).setVisibility(View.GONE);
+        }
     }
 
     public static Intent getIntentToMe(Context context, int isbn) {

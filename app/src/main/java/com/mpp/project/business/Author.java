@@ -28,4 +28,8 @@ public final class Author extends Person {
         this.shortBio = shortBio;
     }
 
+    @Override
+    public AuthorizationLevel getAuthorizationLevel() {
+        return null;
+    }
 }

@@ -11,6 +11,11 @@ import java.util.HashMap;
 public final class Admin extends Person implements AdminRole {
     private IRole role;
 
+    @Override
+    public AuthorizationLevel getAuthorizationLevel() {
+        return AuthorizationLevel.ADMIN;
+    }
+
     public Admin(int userId, String firstName, String lastName, String passWord, String phoneNo) {
         super(userId, firstName, lastName, passWord, phoneNo);
     }

@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by prageeth on 3/7/17.
  */
 
-public abstract class Person implements Serializable{
+public abstract class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private static final int ID_NUMBER_SIZE = 5;
@@ -16,6 +16,15 @@ public abstract class Person implements Serializable{
     private String passWord;
     private String phoneNo;
     private Address address;
+
+    //    Authorization levels
+    public enum AuthorizationLevel {
+        LIBRARIAN,
+        ADMIN,
+        BOTH,
+    }
+
+    public abstract AuthorizationLevel getAuthorizationLevel();
 
     public Person(int userId, String firstName, String lastName, String passWord, String phoneNo, Address address) {
         this.userId = userId;
@@ -58,15 +67,19 @@ public abstract class Person implements Serializable{
     public String getFirstName() {
         return firstName;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public String getPhoneNo() {
         return phoneNo;
     }
+
     public Address getAddress() {
         return address;
     }
+
     public String getPassWord() {
         return passWord;
     }

@@ -8,6 +8,11 @@ public class LibraryMember extends Person implements Serializable {
     private int memberId;
     private CheckoutRecord checkoutRecord; // 1 to 1
 
+    @Override
+    public AuthorizationLevel getAuthorizationLevel() {
+        return null;
+    }
+
     public LibraryMember(int memberId, String firstName, String lastName, String password, String phoneNo, Address address) {
         super(memberId, firstName, lastName, password, phoneNo, address);
         checkoutRecord = new CheckoutRecord();
