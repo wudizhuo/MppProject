@@ -7,12 +7,10 @@ import java.util.Date;
  */
 
 public final class Librarian extends Person implements LibrarianRole {
-    private String librarianId;
     private IRole rolePlaying;
 
-    public Librarian(int userId, String firstName, String lastName, String passWord, String phoneNo, Address address) {
-        super(firstName, lastName, passWord, phoneNo, address);
-        librarianId = "L"+getUserId();
+    public Librarian(int userId, String firstName, String lastName, String passWord, String phoneNo) {
+        super(userId, firstName, lastName, passWord, phoneNo);
     }
 
     @Override

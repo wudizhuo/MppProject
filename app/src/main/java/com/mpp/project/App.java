@@ -7,6 +7,7 @@ import com.mpp.project.business.Address;
 import com.mpp.project.business.Admin;
 import com.mpp.project.business.Author;
 import com.mpp.project.business.Book;
+import com.mpp.project.business.Librarian;
 import com.mpp.project.business.LibraryMember;
 import com.mpp.project.business.SuperAdmin;
 import com.mpp.project.dataaccess.DataAccessFacade;
@@ -41,6 +42,11 @@ public class App extends Application {
         dataAccessFacade.savePerson(superAdmin);
         Admin admin = new Admin(002, "firstName", "lastName", "password", "phoneNo");
         dataAccessFacade.savePerson(admin);
+
+        Librarian librarian = new Librarian(003,"firstName", "lastName", "password", "phoneNo");
+        dataAccessFacade.savePerson(librarian);
+
+
         // TODO:A librarian has to checkout a book? So we need a librarian. If we use UserInfoMgr.getInstance().getUser(), we have to upcast it?
         // So i extended the Admin, not Person in the SuperAdmin class so had to make Admin not final.
         LibraryMember member = new LibraryMember(100, "LibraryMember-firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));
