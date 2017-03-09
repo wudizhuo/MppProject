@@ -40,7 +40,7 @@ public class BookDetail extends BaseActivity implements View.OnClickListener {
 
         int isbn = getIntent().getIntExtra("isbn", -1);
         DataAccessFacade dataAccessFacade = new DataAccessFacade();
-        book = dataAccessFacade.queryBook(isbn);
+        book = dataAccessFacade.queryBook(isbn + "");
         if (book == null) {
             Toast.makeText(this, "Don't have this book", Toast.LENGTH_SHORT).show();
             finish();

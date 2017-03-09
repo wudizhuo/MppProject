@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mpp.project.R;
-import com.mpp.project.business.Author;
+import com.mpp.project.business.*;
 import com.mpp.project.dataaccess.DataAccessFacade;
 
 import java.util.ArrayList;
@@ -120,6 +120,11 @@ public class AddBook extends BaseActivity implements View.OnClickListener {
         }
 
         DataAccessFacade dataAccessFacade = new DataAccessFacade();
+        if(dataAccessFacade.queryBook(ISBN) !=null){
+            Toast.makeText(this, "ISBN is already exists", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         com.mpp.project.business.Book book = new com.mpp.project.business.Book(ISBN, title, maximumCheckout, numberOfCopies, authors);
         dataAccessFacade.saveBook(book);
         finish();

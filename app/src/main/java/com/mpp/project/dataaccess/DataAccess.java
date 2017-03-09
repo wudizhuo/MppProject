@@ -11,5 +11,5 @@ public interface DataAccess {
 
     public void saveBook(Book book);
 
-    public Book queryBook(int ISBN);
+    public Book queryBook(String ISBN);
 }
