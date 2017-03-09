@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileStorageUtil {
-    public static final String APP_DIR = "/bxj/";
 
     public static boolean writeObject(File file, Object object) {
         try {
