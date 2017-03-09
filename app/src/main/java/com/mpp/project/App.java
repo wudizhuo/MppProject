@@ -49,8 +49,10 @@ public class App extends Application {
 
         // TODO:A librarian has to checkout a book? So we need a librarian. If we use UserInfoMgr.getInstance().getUser(), we have to upcast it?
         // So i extended the Admin, not Person in the SuperAdmin class so had to make Admin not final.
-        LibraryMember member = new LibraryMember(100, "LibraryMember-firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));
+        LibraryMember member = new LibraryMember(100, "LibraryMember's firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));
+        LibraryMember member2 = new LibraryMember(101, "LibraryMember's firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));
         dataAccessFacade.savePerson(member);
+        dataAccessFacade.savePerson(member2);
 
         ArrayList<Author> authors = new ArrayList<>();
         authors.add(new Author("firstName", "lastName", "phoneNo", new Address("street", "city", "state", "zip", "country"), "credentials", "bio"));
