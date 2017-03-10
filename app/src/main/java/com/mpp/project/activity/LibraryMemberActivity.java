@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.mpp.project.R;
+import com.mpp.project.UserInfoMgr;
+import com.mpp.project.business.Person;
 
 public class LibraryMemberActivity extends BaseActivity implements View.OnClickListener {
 
@@ -20,6 +22,11 @@ public class LibraryMemberActivity extends BaseActivity implements View.OnClickL
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library_member);
+
+        if (UserInfoMgr.getInstance().getUser().getAuthorizationLevel().equals(Person.AuthorizationLevel.LIBRARIAN)) {
+            findViewById(R.id.btn_addMember).setVisibility(View.GONE);
+        }
+
         findViewById(R.id.btn_addMember).setOnClickListener(this);
         findViewById(R.id.btn_query).setOnClickListener(this);
         et_memberId = (EditText) findViewById(R.id.et_memberId);

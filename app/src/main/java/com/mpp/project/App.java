@@ -53,7 +53,7 @@ public class App extends Application {
         LibraryMember member = new LibraryMember(100, "LibraryMember's firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));
         LibraryMember member2 = new LibraryMember(101, "LibraryMember's firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));
         LibraryMember member3 = new LibraryMember(102, "LibraryMember's firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));
-        LibraryMember member4 = new LibraryMember(104, "LibraryMember's firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));
+        LibraryMember member4 = new LibraryMember(103, "LibraryMember's firstName", "LibraryMember-lastName", "password", "123", new Address("street", "city", "state", "zip", "country"));
         dataAccessFacade.savePerson(member);
         dataAccessFacade.savePerson(member2);
         dataAccessFacade.savePerson(member3);

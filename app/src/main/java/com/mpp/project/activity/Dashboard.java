@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.mpp.project.R;
-import com.mpp.project.UserInfoMgr;
-import com.mpp.project.business.Person;
 
 public class Dashboard extends BaseActivity implements View.OnClickListener {
     @Override
@@ -16,10 +14,6 @@ public class Dashboard extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_dashboard);
         View members = findViewById(R.id.btn_members);
         View books = findViewById(R.id.btn_books);
-
-        if (UserInfoMgr.getInstance().getUser().getAuthorizationLevel().equals(Person.AuthorizationLevel.LIBRARIAN)) {
-            members.setVisibility(View.GONE);
-        }
 
         books.setOnClickListener(this);
         findViewById(R.id.btn_logout).setOnClickListener(this);
