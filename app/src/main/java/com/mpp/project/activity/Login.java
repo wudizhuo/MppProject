@@ -42,6 +42,10 @@ public class Login extends BaseActivity implements View.OnClickListener {
             lyPassword.setError(getResources().getString(R.string.msg_empty_user));
             return;
         }
+        if (person.getAuthorizationLevel() == null) {
+            lyPassword.setError("LibraryMember can not login");
+            return;
+        }
         UserInfoMgr.getInstance().setUser(person);
         startActivity(Dashboard.getIntentToMe(this));
         finish();
